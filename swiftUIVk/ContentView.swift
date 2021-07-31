@@ -99,19 +99,22 @@ struct TextFieldView: View {
     var body: some View {
         VStack(spacing: 0) {
             TextField("Email or login", text: $login)
-                .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .stroke(Color.gray, lineWidth: 1)
-                        ).padding(0)
+                .modifier(TextFieldModifier())
             TextField("Password", text: $password)
-                .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .stroke(Color.gray, lineWidth: 1)
-                        ).padding(0)
+                .modifier(TextFieldModifier())
         }
         .padding(.horizontal, 16)
+    }
+}
+
+struct TextFieldModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .stroke(Color.gray, lineWidth: 1)
+                ).padding(0)
     }
 }
 
